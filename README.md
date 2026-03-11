@@ -1,73 +1,63 @@
-# React + TypeScript + Vite
+# Snaarp Dashboard
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, responsive dashboard built with React, TypeScript, and Vite. This project features a dynamic grid layout with drag-and-drop functionality, resizable widgets, and a variety of data visualization components.
 
-Currently, two official plugins are available:
+## 🚀 Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Dynamic Grid Layout**: Responsive grid that adapts to different screen sizes (1, 2, or 3 columns).
+- **Drag-and-Drop**: Reorder widgets easily using `@dnd-kit`.
+- **Resizable Widgets**: Adjust the width (span) of individual widgets (1-3 columns).
+- **Rich Visualizations**: Includes charts (Recharts), maps, tables, and statistics.
+- **Modern Tech Stack**: Built with React 19, Vite, Tailwind CSS 4, and Framer Motion.
+- **Touch & Keyboard Support**: Full support for touch devices and keyboard navigation.
 
-## React Compiler
+## 🛠️ Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- **Framework**: [React 19](https://react.dev/)
+- **Build Tool**: [Vite](https://vitejs.dev/)
+- **Styling**: [Tailwind CSS 4](https://tailwindcss.com/)
+- **State Management**: Custom React Hooks
+- **Drag & Drop**: [@dnd-kit](https://dnd-kit.com/)
+- **Charts**: [Recharts](https://recharts.org/)
+- **Icons**: [Lucide React](https://lucide.dev/)
+- **Animations**: [Framer Motion](https://www.framer.com/motion/)
 
-## Expanding the ESLint configuration
+## 🏃 Getting Started
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+To get the project up and running locally, follow these steps:
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+### 1. Prerequisite
+Ensure you have [Node.js](https://nodejs.org/) installed (version 18 or higher recommended).
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+### 2. Installation
+Install the project dependencies using npm:
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### 3. Development
+Start the development server:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm run dev
 ```
+
+The application will be available at `http://localhost:5173`.
+
+### 4. Build
+To create a production-ready build:
+
+```bash
+npm run build
+```
+
+## 🧠 Challenges Faced
+
+During the development of this project, several technical challenges were addressed:
+
+1.  **Dynamic Grid Management**: Implementing a layout that allows widgets to span multiple columns (1, 2, or 3) while ensuring they reflow correctly across mobile, tablet, and desktop views.
+2.  **Drag-and-Drop Integration**: Integrating `@dnd-kit` within a variable-width grid was complex. Ensuring that the sorting strategy (`rectSortingStrategy`) correctly calculates positions when widgets have different widths required careful configuration.
+3.  **State Persistence**: Managing the layout state (widget order and sizes) so that the user's customizations are preserved while interacting with the dashboard.
+4.  **Component Modularity**: Creating a flexible `DraggableWidget` wrapper that can house diverse content types (Charts, Maps, Tables) without leaking styles or breaking the drag-and-drop context.
+
